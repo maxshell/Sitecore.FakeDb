@@ -89,6 +89,20 @@ namespace Sitecore.FakeDb
       this.Children.Add(child);
     }
 
+    public void Add(DbVersion version)
+    {
+      Assert.ArgumentNotNull(version, "version");
+
+      this.VersionsCount[version.Language] = version.Version;
+      if (version.Fields != null)
+      {
+        foreach (var field in version.Fields)
+        {
+          this.Add(field);
+        }
+      }
+    }
+
     IEnumerator IEnumerable.GetEnumerator()
     {
       return this.Children.GetEnumerator();

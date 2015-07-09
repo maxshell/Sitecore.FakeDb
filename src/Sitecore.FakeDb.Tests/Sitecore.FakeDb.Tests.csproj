@@ -160,6 +160,7 @@
     <Compile Include="DbTest.cs" />
     <Compile Include="DbItemTest.cs" />
     <Compile Include="Data\Query\FastQueryTest.cs" />
+    <Compile Include="DbVersionTest.cs" />
     <Compile Include="FieldNamingHelperTest.cs" />
     <Compile Include="GettingStarted.cs" />
     <Compile Include="GlobalsTest.cs" />

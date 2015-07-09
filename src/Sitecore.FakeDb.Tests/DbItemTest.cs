@@ -142,6 +142,24 @@
       parent.Children.Single().Should().BeEquivalentTo(child);
     }
 
+    [Theory, AutoData]
+    public void ShouldAddVersion(DbItem item)
+    {
+      // arrange
+      var version = new DbVersion("en", 1);
+      version.Fields.Add(new DbField("my field") { { "en", "Hello" } });
+
+      // act
+      item.Add(version);
+
+      // assert
+      item.VersionsCount.Should().ContainKey("en");
+      item.VersionsCount["en"].Should().Be(1);
+      item.Fields.Count().Should().Be(1);
+      var expectedField = item.Fields.Single();
+      expectedField.GetValue("en", 1).Should().Be("Hello");
+    }
+
     [Fact]
     public void ShouldCreateNewItemAccess()
     {
